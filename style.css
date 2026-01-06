@@ -1,42 +1,53 @@
+/* --- VARIABLES ET CONFIGURATION --- */
 :root {
-    --primary: #6366f1;
+    --primary: #6366f1;         /* Indigo */
     --primary-dark: #4f46e5;
-    --bg: #0f172a;
+    --bg: #0f172a;              /* Sombre (Navy) */
     --card-bg: rgba(255, 255, 255, 0.05);
     --text: #f8fafc;
     --text-muted: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement fluide vers les ancres */
 }
 
 body {
-    font-family: 'Plus+Jakarta+Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Background décoratif */
+/* --- EFFET DE FOND (BLOB) --- */
 .blob-bg {
     position: fixed;
-    top: -10%; left: -10%;
-    width: 400px; height: 400px;
-    background: var(--primary);
-    filter: blur(150px);
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    filter: blur(120px);
     opacity: 0.15;
     z-index: -1;
 }
 
-/* Header & Nav */
+/* --- NAVIGATION --- */
 header {
-    padding: 1.5rem 10%;
+    padding: 1.5rem 8%;
     position: sticky;
     top: 0;
-    backdrop-filter: blur(10px);
-    z-index: 100;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
 }
 
 nav {
@@ -45,52 +56,75 @@ nav {
     align-items: center;
 }
 
-.logo { font-size: 1.5rem; font-weight: 800; }
-.logo span { color: var(--primary); }
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
 
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
     margin-left: 2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
     transition: 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text);
+}
 
 .btn-contact {
     background: var(--primary);
-    padding: 0.6rem 1.2rem;
+    padding: 0.7rem 1.4rem !important;
     border-radius: 50px;
     color: white !important;
 }
 
-/* Hero Section */
+/* --- HERO SECTION --- */
 .hero {
-    padding: 8rem 10% 4rem;
+    padding: 10rem 8% 6rem;
     text-align: center;
 }
 
 .badge {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.15);
     color: var(--primary);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-h1 { font-size: 4rem; margin: 1.5rem 0; letter-spacing: -2px; }
+h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin: 1.5rem 0;
+    line-height: 1.1;
+    font-weight: 800;
+}
 
 .hero p {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+    max-width: 650px;
+    margin: 0 auto 2.5rem;
     color: var(--text-muted);
     font-size: 1.2rem;
 }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* --- BOUTONS --- */
+.btn-primary, .btn-secondary {
     padding: 1rem 2rem;
     border-radius: 12px;
     text-decoration: none;
@@ -98,118 +132,76 @@ h1 { font-size: 4rem; margin: 1.5rem 0; letter-spacing: -2px; }
     transition: 0.3s;
 }
 
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
-
-/* Cartes de Projets */
-.projects-section { padding: 4rem 10%; }
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+.btn-primary {
+    background: var(--primary);
+    color: white;
 }
 
-.project-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 2rem;
-    border-radius: 24px;
-    transition: 0.4s;
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-.project-card:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: var(--primary);
-    transform: scale(1.02);
+.btn-secondary {
+    border: 1px solid var(--glass-border);
+    color: var(--text);
 }
 
-.project-icon { color: var(--primary); margin-bottom: 1rem; }
-
-.tags { margin-top: 1.5rem; }
-.tags span {
-    font-size: 0.75rem;
-    background: rgba(255,255,255,0.1);
-    padding: 0.3rem 0.8rem;
-    border-radius: 50px;
-    margin-right: 0.5rem;
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
 }
 
-/* Animations au scroll */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hub Section */
+/* --- HUB / CATEGORIES GRID --- */
 .hub-section {
-    padding: 6rem 10%;
-    background: linear-gradient(180deg, var(--bg) 0%, #161e31 100%);
+    padding: 6rem 8%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
 .hub-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
 }
 
 .hub-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
     padding: 2.5rem;
-    border-radius: 30px;
+    border-radius: 24px;
     text-decoration: none;
     color: white;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Petit effet de lumière au survol */
-.hub-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent);
-    opacity: 0;
-    transition: 0.4s;
 }
 
 .hub-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.hub-card:hover::before {
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .hub-icon {
-    background: var(--primary);
-    width: 50px;
-    height: 50px;
+    color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 16px;
     margin-bottom: 1.5rem;
 }
 
 .hub-card h3 {
-    font-size: 1.5rem;
     margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
 .hub-card p {
@@ -220,9 +212,52 @@ h1 { font-size: 4rem; margin: 1.5rem 0; letter-spacing: -2px; }
 }
 
 .hub-link {
-    font-weight: 600;
     color: var(--primary);
+    font-weight: 700;
     font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+}
+
+/* --- PROJETS --- */
+.projects-section {
+    padding: 4rem 8% 8rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+/* --- ANIMATIONS AU SCROLL --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 4rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* On pourrait ajouter un menu mobile plus tard */
+    h1 { font-size: 3rem; }
+    .hero { padding-top: 6rem; }
 }
