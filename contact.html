@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Antoine Dubois</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="blob-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo">AD<span>.</span></div>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="veille.html">Veille Technologique</a>
+                <a href="contact.html" class="active btn-contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero reveal">
+            <span class="badge">Me joindre</span>
+            <h1>Prenons contact</h1>
+            <p>Je suis actuellement à la recherche d'opportunités (stage/alternance). N'hésitez pas à me contacter via les plateformes ci-dessous.</p>
+        </section>
+
+        <section class="contact-container">
+            <div class="contact-grid">
+                
+                <div class="hub-card reveal">
+                    <div class="hub-icon"><i data-lucide="mail"></i></div>
+                    <h3>Email professionnel</h3>
+                    <p>Pour toute demande officielle ou proposition de stage :</p>
+                    <a href="mailto:antoine.dubois@exemple.com" class="contact-link">antoine.dubois@exemple.com</a>
+                </div>
+
+                <div class="hub-card reveal">
+                    <div class="hub-icon"><i data-lucide="linkedin"></i></div>
+                    <h3>Réseau Social</h3>
+                    <p>Suivez mon actualité et mes projets sur mon profil LinkedIn :</p>
+                    <a href="https://linkedin.com/in/antoinedubois" target="_blank" class="contact-link">Mon profil LinkedIn →</a>
+                </div>
+
+                <div class="hub-card reveal">
+                    <div class="hub-icon"><i data-lucide="github"></i></div>
+                    <h3>Code & Dépôts</h3>
+                    <p>Consultez mes repositories et mes contributions techniques :</p>
+                    <a href="https://github.com/AntoineDuboisSIO115" target="_blank" class="contact-link">Mon GitHub →</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Antoine Dubois — Portfolio BTS SIO</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
