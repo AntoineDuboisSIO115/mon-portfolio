@@ -1,67 +1,148 @@
-/* style.css */
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --bg: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
 }
 
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus+Jakarta+Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background décoratif */
+.blob-bg {
+    position: fixed;
+    top: -10%; left: -10%;
+    width: 400px; height: 400px;
+    background: var(--primary);
+    filter: blur(150px);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* Header & Nav */
 header {
-    background-color: #007acc;
-    color: white;
-    padding: 20px 0;
+    padding: 1.5rem 10%;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: var(--primary); }
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+.btn-contact {
+    background: var(--primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    color: white !important;
+}
+
+/* Hero Section */
+.hero {
+    padding: 8rem 10% 4rem;
     text-align: center;
 }
 
-header nav a {
+.badge {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 4rem; margin: 1.5rem 0; letter-spacing: -2px; }
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background: var(--primary);
     color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-header nav a:hover {
-    text-decoration: underline;
-}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
-main {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-}
+/* Cartes de Projets */
+.projects-section { padding: 4rem 10%; }
 
-section {
-    margin-bottom: 20px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .project-card {
-    background-color: #e6f2ff;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 24px;
+    transition: 0.4s;
 }
 
-footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #007acc;
-    color: white;
-    margin-top: 20px;
+.project-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--primary);
+    transform: scale(1.02);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-    }
-    .project-card {
-        padding: 10px;
-    }
+.project-icon { color: var(--primary); margin-bottom: 1rem; }
+
+.tags { margin-top: 1.5rem; }
+.tags span {
+    font-size: 0.75rem;
+    background: rgba(255,255,255,0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    margin-right: 0.5rem;
+}
+
+/* Animations au scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
