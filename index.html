@@ -1,109 +1,251 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antoine Dubois | Portfolio BTS SIO</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Développeur & Étudiant en Informatique</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* En-tête / Profil */
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 0 auto 1.5rem;
+      color: var(--bg);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .bio {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Boutons d'action */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Badges Compétences */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background-color: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Timeline / Parcours */
+    .item {
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 1.2rem;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .item-date {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Pied de page */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="blob-bg"></div>
-
+  <div class="container">
+    <!-- Header / Présentation -->
     <header>
-        <nav>
-            <div class="logo">AD<span>.</span></div>
-            <div class="nav-links">
-                <a href="index.html" class="active">Accueil</a>
-                <a href="veille.html">Veille Technologique</a>
-                <a href="#contact" class="btn-contact">Contact</a>
-            </div>
-        </nav>
+      <div class="avatar">AD</div>
+      <h1>Antoine Dubois</h1>
+      <p class="subtitle">Développeur &amp; Étudiant en Informatique</p>
+      <p class="bio">
+        Passionné par le développement web, les architectures logicielles et l'administration système. Actuellement en formation, je conçois des solutions applicatives fiables et performantes.
+      </p>
+      <div class="actions">
+        <!-- Remplace 'cv.pdf' par le chemin réel de ton fichier CV -->
+        <a href="cv.pdf" target="_blank" class="btn btn-primary">
+          📄 Consulter mon CV
+        </a>
+        <a href="mailto:ton.email@example.com" class="btn btn-secondary">
+          ✉️ Me contacter
+        </a>
+      </div>
     </header>
 
-    <main>
-        <section class="hero reveal">
-            <span class="badge">Étudiant BTS SIO</span>
-            <h1>Antoine Dubois</h1>
-            <p>Futur expert en informatique, passionné par le développement et les solutions d'infrastructure performantes.</p>
-            <div class="hero-btns">
-                <a href="#categories" class="btn-primary">Explorer mon profil</a>
-                <a href="#projets" class="btn-secondary">Voir mes projets</a>
-            </div>
-        </section>
+    <!-- Compétences -->
+    <section>
+      <h2>Compétences Techniques</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">PHP / MySQL</span>
+        <span class="skill-tag">JavaScript / HTML5 </span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Linux (Debian / Ubuntu)</span>
+      </div>
+    </section>
 
-        <section id="categories" class="hub-section">
-            <h2 class="reveal">Mon Univers</h2>
-            <div class="hub-grid">
-                
-                <a href="parcours.html" class="hub-card reveal">
-                    <div class="hub-icon"><i data-lucide="graduation-cap"></i></div>
-                    <h3>Mon Parcours</h3>
-                    <p>Découvrez mes formations, mon diplôme et mon évolution académique.</p>
-                    <span class="hub-link">En savoir plus →</span>
-                </a>
+    <!-- Formation & Expérience -->
+    <section>
+      <h2>Parcours</h2>
+      <div class="item">
+        <div class="item-title">BTS Services Informatiques aux Organisations (SIO) — Option SLAM</div>
+        <div class="item-date">En cours</div>
+        <p>Développement d'applications métiers, conception de bases de données relationnelles, intégration web et gestion de projet informatique.</p>
+      </div>
 
-                <a href="assets/cv-antoine-dubois.pdf" target="_blank" class="hub-card reveal">
-                    <div class="hub-icon"><i data-lucide="file-text"></i></div>
-                    <h3>Mon CV</h3>
-                    <p>Consultez ou téléchargez mon CV complet au format PDF.</p>
-                    <span class="hub-link">Télécharger →</span>
-                </a>
+      <div class="item">
+        <div class="item-title">Diplome</div>
+        <p>- 2022 : Obtention du Baccalauréat professionnel en système numérique mention Assez Bien Mirei le Grenet Compiègne</p><br>
+        <p>- Mai à décembre 2024 : Obtention du Titre professionnel Technicien d'assistance informatique SJT de Creil </p><br>
+        <p> - BTS SIO – Option SLAM (en cours) Lycée Gaston Berger – Li le</p><br>
 
-                <a href="competences.html" class="hub-card reveal">
-                    <div class="hub-icon"><i data-lucide="settings-2"></i></div>
-                    <h3>Compétences</h3>
-                    <p>Développement (PHP, Java) et Systèmes & Réseaux.</p>
-                    <span class="hub-link">Détails →</span>
-                </a>
+        
+        <div class="item-date">Stage / Projets</div>
+        <p> - Stage technicien d'assistance informatique 2023 </p>
 
-                <a href="veille.html" class="hub-card reveal">
-                    <div class="hub-icon"><i data-lucide="search"></i></div>
-                    <h3>Veille Techno</h3>
-                    <p>Mes recherches sur les innovations et la cybersécurité.</p>
-                    <span class="hub-link">Lire la veille →</span>
-                </a>
-            </div>
-        </section>
+        <p>zzegzegzgezeg</p>
+        <p>Configuration de postes de travail</p>
+      </div>
+    </section>
 
-        <section id="projets" class="projects-section">
-            <h2 class="reveal">Mes Réalisations</h2>
-            <div class="projects-grid">
-                <div class="project-card reveal">
-                    <div class="project-icon"><i data-lucide="layout"></i></div>
-                    <h3>Projet 1</h3>
-                    <p>Description de ton projet informatique réalisé en cours ou en stage.</p>
-                </div>
-                <div class="project-card reveal">
-                    <div class="project-icon"><i data-lucide="database"></i></div>
-                    <h3>Projet 2</h3>
-                    <p>Gestion de base de données ou mise en place d'infrastructure.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Antoine Dubois — Portfolio BTS SIO</p>
+      <p>© 2026 Antoine Dubois — Hébergé sur le web</p>
     </footer>
+  </div>
 
-    <script>
-        // Initialisation des icônes
-        lucide.createIcons();
-
-        // Animation au défilement (Scroll Reveal)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-    </script>
 </body>
 </html>
