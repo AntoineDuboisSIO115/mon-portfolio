@@ -1,30 +1,251 @@
-<!-- Veille Technologique -->
-    <section>
-      <h2>📡 Veille Technologique (Automatisation Python)</h2>
-      <p class="bio" style="margin: 0 0 1.5rem 0; text-align: left;">
-        Mise en place d'un système de veille automatisé : un script Python analyse des flux RSS techniques (Real Python, Planet Python) et transmet les alertes en temps réel via un webhook Discord. L'exécution est planifiée automatiquement à l'aide de <strong>GitHub Actions</strong>. 
-        <a href="https://github.com/TON_PSEUDO/veille-python" target="_blank" style="color: var(--accent); text-decoration: none;">[Voir le code source]</a>
-      </p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Développeur & Étudiant en Informatique</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
 
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; text-align: left;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--border); color: var(--accent);">
-              <th style="padding: 0.75rem 0.5rem;">Date</th>
-              <th style="padding: 0.75rem 0.5rem;">Sujet / Article</th>
-              <th style="padding: 0.75rem 0.5rem;">Source</th>
-              <th style="padding: 0.75rem 0.5rem;">Apport technique</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.75rem 0.5rem; color: var(--text-muted);">09/09/2026</td>
-              <td style="padding: 0.75rem 0.5rem; font-weight: 500;">Python 3.15 Preview: Lazy Imports</td>
-              <td style="padding: 0.75rem 0.5rem;"><a href="https://realpython.com" target="_blank" style="color: var(--accent); text-decoration: none;">Real Python</a></td>
-              <td style="padding: 0.75rem 0.5rem; color: var(--text-muted);">Optimisation du chargement des modules pour les applications lourdes.</td>
-            </tr>
-            <!-- Tu pourras ajouter de nouvelles lignes ici au fil des semaines -->
-          </tbody>
-        </table>
-      </div>
-    </section>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* En-tête / Profil */
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 0 auto 1.5rem;
+      color: var(--bg);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .bio {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Boutons d'action */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Badges Compétences */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background-color: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Timeline / Parcours */
+    .item {
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 1.2rem;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .item-date {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Pied de page */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header / Présentation -->
+    <header>
+      <div class="avatar">AD</div>
+      <h1>Antoine Dubois</h1>
+      <p class="subtitle">Développeur &amp; Étudiant en Informatique</p>
+      <p class="bio">
+        Passionné par le développement web, les architectures logicielles et l'administration système. Actuellement en formation, je conçois des solutions applicatives fiables et performantes.
+      </p>
+      <div class="actions">
+        <!-- Remplace 'cv.pdf' par le chemin réel de ton fichier CV -->
+        <a href="cv.pdf" target="_blank" class="btn btn-primary">
+          📄 Consulter mon CV
+        </a>
+        <a href="mailto:ton.email@example.com" class="btn btn-secondary">
+          ✉️ Me contacter
+        </a>
+      </div>
+    </header>
+
+    <!-- Compétences -->
+    <section>
+      <h2>Compétences Techniques</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">PHP / MySQL</span>
+        <span class="skill-tag">JavaScript / HTML5 </span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Linux (Debian / Ubuntu)</span>
+      </div>
+    </section>
+
+    <!-- Formation & Expérience -->
+    <section>
+      <h2>Parcours</h2>
+      <div class="item">
+        <div class="item-title">BTS Services Informatiques aux Organisations (SIO) — Option SLAM</div>
+        <div class="item-date">En cours</div>
+        <p>Développement d'applications métiers, conception de bases de données relationnelles, intégration web et gestion de projet informatique.</p>
+      </div>
+
+      <div class="item">
+        <div class="item-title">Diplome</div>
+        <p>- 2022 : Obtention du Baccalauréat professionnel en système numérique mention Assez Bien Mirei le Grenet Compiègne</p><br>
+        <p>- Mai à décembre 2024 : Obtention du Titre professionnel Technicien d'assistance informatique SJT de Creil </p><br>
+        <p> - BTS SIO – Option SLAM (en cours) Lycée Gaston Berger – Li le</p><br>
+
+        
+        <div class="item-date">Stage / Projets</div>
+        <p> - Stage technicien d'assistance informatique 2023 </p>
+
+        <p>zzegzegzgezeg</p>
+        <p>Configuration de postes de travail</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Antoine Dubois — Hébergé sur le web</p>
+    </footer>
+  </div>
+
+</body>
+</html>
