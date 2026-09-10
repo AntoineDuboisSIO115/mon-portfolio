@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom à Dom - Création | Portfolio Antoine Dubois</title>
+    <link rel="stylesheet" href="style.css"> <!-- Votre fichier CSS principal -->
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <a href="index.html" class="btn btn-secondary">Accueil</a>
+            <a href="projets.html" class="btn btn-primary">Tous les Projets</a>
+            <a href="veille.html" class="btn btn-secondary">Veille</a>
+        </nav>
+
+        <!-- En-tête du projet -->
+        <header style="padding-bottom: 1rem;">
+            <h1>Tom à Dom</h1>
+            <p class="subtitle">Plateforme Web de services à la personne</p>
+        </header>
+
+        <!-- Description globale (Optionnelle) -->
+        <section style="margin-bottom: 2rem;">
+            <h2>Aperçu du projet</h2>
+            <p class="bio">Suivez ici le développement de cette application web, de la conception de la base de données à l'intégration finale.</p>
+        </section>
+
+        <!-- Timeline / Étapes de création (Superposées) -->
+        <section>
+            <h2>Journal de bord du projet</h2>
+
+            <!-- Étape 1 : Conception BDD -->
+            <article class="project-step">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h3>Modélisation de la Base de Données</h3>
+                </div>
+                <!-- Emplacement de l'image -->
+                <div class="step-image-placeholder">
+                    <img src="images/tom_dom_mld.png" alt="Image du Modèle Logique de Données (MLD) de Tom à Dom" title="MLD du projet">
+                    <p class="image-caption">MLD initial : tables Utilisateurs, Prestations et Réservations.</p>
+                </div>
+                <!-- Description de l'étape -->
+                <div class="step-description">
+                    <p>La première étape a consisté à définir les entités nécessaires. Nous avons opté pour une base de données relationnelle MySQL. J'ai créé les tables pour gérer les clients (nom, email, adresse), les types de services proposés et les demandes d'intervention.</p>
+                </div>
+            </article>
+
+            <!-- Étape 2 : Espace Client -->
+            <article class="project-step">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h3>Développement de l'Espace Client</h3>
+                </div>
+                <!-- Emplacement de l'image -->
+                <div class="step-image-placeholder">
+                    <img src="images/tom_dom_inscription.png" alt="Capture d'écran du formulaire d'inscription sur Tom à Dom" title="Formulaire d'inscription">
+                    <p class="image-caption">Formulaire d'inscription avec validation côté client et serveur.</p>
+                </div>
+                <!-- Description de l'étape -->
+                <div class="step-description">
+                    <p>Création de l'interface publique. Intégration du formulaire d'inscription en HTML/CSS et développement de la logique PHP pour insérer les nouvelles données client dans la table `utilisateurs` de la BDD.</p>
+                </div>
+            </article>
+
+            <!-- Étape 3 : Tableau de Bord Admin -->
+            <article class="project-step">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h3>Tableau de Bord Administrateur</h3>
+                </div>
+                <!-- Emplacement de l'image -->
+                <div class="step-image-placeholder">
+                    <img src="images/tom_dom_admin.png" alt="Capture d'écran du Dashboard administrateur" title="Vue du tableau de bord">
+                    <p class="image-caption">Dashboard permettant la validation ou le refus des réservations.</p>
+                </div>
+                <!-- Description de l'étape -->
+                <div class="step-description">
+                    <p>Développement de la partie back-office sécurisée. L'administrateur peut visualiser, modifier ou supprimer les réservations clients. Une connexion à la base de données permet d'afficher l'état de chaque demande en temps réel.</p>
+                </div>
+            </article>
+
+            <!-- Étape 4 : Tests et Déploiement (Optionnelle) -->
+            <article class="project-step">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <h3>Tests et Finalisation</h3>
+                </div>
+                <!-- Emplacement de l'image -->
+                <div class="step-image-placeholder">
+                    <img src="images/tom_dom_final.png" alt="Vue globale de l'application Tom à Dom" title="Application fonctionnelle">
+                    <p class="image-caption">Interface finale responsive de l'application.</p>
+                </div>
+                <!-- Description de l'étape -->
+                <div class="step-description">
+                    <p>Phase de test rigoureuse : vérification de la sécurité des formulaires, test des différents scénarios utilisateurs et ajustements finaux du responsive design pour s'assurer que le site est utilisable sur mobile.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Antoine Dubois — BTS SIO SLAM — <a href="https://github.com/AntoineDuboisSIO115" target="_blank" style="color: var(--accent); text-decoration: none;">Code source sur GitHub</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
