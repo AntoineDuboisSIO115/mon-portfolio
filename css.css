@@ -424,3 +424,58 @@ footer {
         margin-bottom: 2rem;
     }
 }
+
+
+/* --- STYLES DU MENU DÉROULANT DANS LE TABLEAU EXCEL --- */
+
+/* Le titre cliquable (Compétence principale) */
+.tableau-excel summary {
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none; /* Cache la flèche moche par défaut du navigateur */
+    position: relative;
+    padding-left: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+/* Cache la flèche native sur les navigateurs basés sur WebKit (Safari, Chrome) */
+.tableau-excel summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Effet au survol pour montrer que c'est cliquable */
+.tableau-excel summary:hover {
+    color: #38bdf8;
+}
+
+/* Notre propre petite flèche personnalisée */
+.tableau-excel summary::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.7rem;
+    color: #64748b;
+    transition: transform 0.3s ease; /* Animation fluide quand ça tourne */
+}
+
+/* La flèche tourne vers le bas quand on clique */
+.tableau-excel details[open] summary::before {
+    transform: rotate(90deg);
+    color: #38bdf8;
+}
+
+/* Le texte des sous-compétences */
+.sous-competences {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 1.2rem;
+    list-style-type: none; /* On enlève les gros points noirs */
+}
+
+.sous-competences li {
+    font-size: 0.75rem; /* Écrit un peu plus petit que le titre */
+    color: #94a3b8; /* Gris un peu plus clair pour différencier */
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
