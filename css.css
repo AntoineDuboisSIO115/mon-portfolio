@@ -479,3 +479,33 @@ footer {
     margin-bottom: 6px;
     line-height: 1.3;
 }
+
+
+
+/* --- CORRECTIONS DES POINTS QUI DÉPASSENT ET LARGEUR DU TABLEAU --- */
+
+/* 1. On élargit la colonne du tableau (de 350px on passe à 400px) */
+.layout-projet {
+    grid-template-columns: 400px 1fr !important; 
+}
+
+/* 2. On empêche les points blancs de dépasser à gauche */
+.sous-competences {
+    list-style-type: none !important; /* Force la suppression des gros points */
+    padding-left: 15px !important; /* Pousse le texte vers la droite, à l'intérieur de la case */
+    margin-left: 0 !important;
+}
+
+.sous-competences li {
+    list-style: none !important; /* Sécurité supplémentaire pour cacher les puces */
+}
+
+/* 3. On supprime la flèche par défaut du navigateur qui faisait doublon */
+.tableau-excel summary {
+    display: block !important; /* Retire le style de liste natif */
+    padding-left: 1.5rem !important; /* Laisse la place pour notre propre flèche */
+}
+
+.tableau-excel summary::-webkit-details-marker {
+    display: none !important; /* Cache la flèche native sur Chrome/Edge/Safari */
+}
