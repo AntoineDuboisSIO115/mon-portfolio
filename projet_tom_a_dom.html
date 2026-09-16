@@ -4,24 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tom à Dom - Création | Portfolio Antoine Dubois</title>
-    <link rel="stylesheet" href="css.css"> <!-- Votre fichier CSS principal -->
+    <!-- C'est ici que ton fichier CSS est appelé, une seule fois suffit -->
+    <link rel="stylesheet" href="css.css">
 </head>
-    <main> 
-    <!-- En-tête du projet -->
-        <header style="padding-bottom: 1rem;">
-            <h1>Tom à Dom</h1>
-            <p class="subtitle">Plateforme Web de services à la personne</p>
-            
-            <!-- Boutons d'action : Site en ligne et GitHub -->
-            <div class="actions" style="margin-top: 1.5rem;">
-                <a href="https://tomadom.infinityfree.me/?i=1" target="_blank" class="btn btn-primary">
-                    🌐 Visiter le site
-                </a>
-                <a href="https://github.com/AntoineDuboisSIO115" target="_blank" class="btn btn-secondary">
-                    📂 Voir sur GitHub
-                </a>
-            </div>
-        </header>
 <body>
 
     <div class="container">
@@ -32,182 +17,171 @@
             <a href="veille.html" class="btn btn-secondary">Veille</a>
         </nav>
 
-        <!-- En-tête du projet -->
-        <header style="padding-bottom: 1rem;">
+        <!-- En-tête du projet (J'ai fusionné tes deux en-têtes) -->
+        <header style="padding-bottom: 2rem;">
             <h1>Tom à Dom</h1>
             <p class="subtitle">Plateforme Web de services à la personne</p>
+            
+            <!-- Boutons d'action -->
+            <div class="actions" style="margin-top: 1.5rem;">
+                <a href="https://tomadom.infinityfree.me/?i=1" target="_blank" class="btn btn-primary">
+                    🌐 Visiter le site
+                </a>
+                <a href="https://github.com/AntoineDuboisSIO115" target="_blank" class="btn btn-secondary">
+                    📂 Voir sur GitHub
+                </a>
+            </div>
         </header>
 
-        <!-- Description globale (Optionnelle) -->
-        <section style="margin-bottom: 2rem;">
-            <h2>Aperçu du projet</h2>
-            <p class="bio">Suivez ici le développement de cette application web, de la conception de la base de données à l'intégration finale.</p>
-        </section>
+        <!-- DEBUT DE LA ZONE EN DEUX COLONNES -->
+        <div class="layout-projet">
+            
+            <!-- COLONNE GAUCHE : Compétences E5 -->
+            <aside class="sidebar-competences">
+                <h3>Grille de compétences E5</h3>
+                
+                <div class="competences-list">
+                    <!-- Compétence 1 -->
+                    <details class="competence-item valide">
+                        <summary>Gérer le patrimoine informatique <span class="status-icon">✔️</span></summary>
+                        <ul>
+                            <li>Recenser et identifier les ressources numériques</li>
+                            <li>Exploiter des référentiels, normes et standards</li>
+                            <li>Mettre en place et vérifier les niveaux d’habilitation</li>
+                            <li>Vérifier les conditions de la continuité d’un service</li>
+                            <li>Gérer des sauvegardes</li>
+                            <li>Vérifier le respect des règles d’utilisation</li>
+                        </ul>
+                    </details>
 
-        <!-- Timeline / Étapes de création (Superposées) -->
-        <section>
-            <h2>Journal de bord du projet</h2>
+                    <!-- Compétence 2 -->
+                    <details class="competence-item valide">
+                        <summary>Répondre aux incidents et demandes <span class="status-icon">✔️</span></summary>
+                        <ul>
+                            <li>Collecter, suivre et orienter des demandes</li>
+                            <li>Traiter des demandes concernant les services réseau, système et applicatifs</li>
+                            <li>Traiter des demandes concernant les applications</li>
+                        </ul>
+                    </details>
 
-            <!-- Étape 1 : Conception BDD -->
-            <article class="project-step">
-                <div class="step-header">
-                    <span class="step-number">1</span>
-                    <h3>Modélisation de la Base de Données</h3>
-                </div>
-                <!-- Emplacement de l'image -->
-                <div class="step-image-placeholder">
-                    <img src="image/tom_dom_mld.png" alt="Image du Modèle Logique de Données (MLD) de Tom à Dom" title="MLD du projet">
-                    <p class="image-caption">MLD initial : tables Utilisateurs, Prestations et Réservations.</p>
-                </div>
-                <!-- Description de l'étape -->
-                <div class="step-description">
-                    <p>La première étape a consisté à définir les entités nécessaires. Nous avons opté pour une base de données relationnelle MySQL. J'ai créé les tables pour gérer les clients (nom, email, adresse), les types de services proposés et les demandes d'intervention.</p>
-                </div>
-            </article>
+                    <!-- Compétence 3 -->
+                    <details class="competence-item valide" open>
+                        <summary>Développer la présence en ligne <span class="status-icon">✔️</span></summary>
+                        <ul>
+                            <li>Valorisation de l’image de l’organisation sur les médias numériques</li>
+                            <li>Référencer les services en ligne et mesurer leur visibilité</li>
+                            <li>Participer à l’évolution d’un site Web exploitant les données</li>
+                        </ul>
+                    </details>
 
-            <!-- Étape 2 : Espace Client -->
-            <article class="project-step">
-                <div class="step-header">
-                    <span class="step-number">2</span>
-                    <h3>Développement de l'Espace Client</h3>
-                </div>
-                <!-- Emplacement de l'image -->
-                <div class="step-image-placeholder">
-                    <img src="image/tom_dom_inscription.png" alt="Capture d'écran du formulaire d'inscription sur Tom à Dom" title="Formulaire d'inscription">
-                    <p class="image-caption">Formulaire d'inscription avec validation côté client et serveur.</p>
-                </div>
-                <!-- Description de l'étape -->
-                <div class="step-description">
-                    <p>Création de l'interface publique. Intégration du formulaire d'inscription en HTML/CSS et développement de la logique PHP pour insérer les nouvelles données client dans la table `utilisateurs` de la BDD.</p>
-                </div>
-            </article>
+                    <!-- Compétence 4 -->
+                    <details class="competence-item valide">
+                        <summary>Travailler en mode projet <span class="status-icon">✔️</span></summary>
+                        <ul>
+                            <li>Analyser les objectifs et les modalités d’organisation</li>
+                            <li>Planifier les activités</li>
+                            <li>Évaluer les indicateurs de suivi et analyser les écarts</li>
+                        </ul>
+                    </details>
 
-            <!-- Étape 3 : Tableau de Bord Admin -->
-            <article class="project-step">
-                <div class="step-header">
-                    <span class="step-number">3</span>
-                    <h3>Tableau de Bord Administrateur</h3>
-                </div>
-                <!-- Emplacement de l'image -->
-                <div class="step-image-placeholder">
-                    <img src="image/tom_dom_admin.png" alt="Capture d'écran du Dashboard administrateur" title="Vue du tableau de bord">
-                    <p class="image-caption">Dashboard permettant la validation ou le refus des réservations.</p>
-                </div>
-                <!-- Description de l'étape -->
-                <div class="step-description">
-                    <p>Développement de la partie back-office sécurisée. L'administrateur peut visualiser, modifier ou supprimer les réservations clients. Une connexion à la base de données permet d'afficher l'état de chaque demande en temps réel.</p>
-                </div>
-            </article>
+                    <!-- Compétence 5 -->
+                    <details class="competence-item non-valide">
+                        <summary>Mettre à disposition un service <span class="status-icon">➖</span></summary>
+                        <p class="non-mobilisee">Non mobilisée sur ce projet</p>
+                    </details>
 
-            <!-- Étape 4 : Tests et Déploiement (Optionnelle) -->
-            <article class="project-step">
-                <div class="step-header">
-                    <span class="step-number">4</span>
-                    <h3>Tests et Finalisation</h3>
+                    <!-- Compétence 6 -->
+                    <details class="competence-item non-valide">
+                        <summary>Organiser son développement <span class="status-icon">➖</span></summary>
+                        <p class="non-mobilisee">Non mobilisée sur ce projet</p>
+                    </details>
                 </div>
-                <!-- Emplacement de l'image -->
-                <div class="step-image-placeholder">
-                    <img src="image/tom_dom_final.png" alt="Vue globale de l'application Tom à Dom" title="Application fonctionnelle">
-                    <p class="image-caption">Interface finale responsive de l'application.</p>
-                </div>
-                <!-- Description de l'étape -->
-                <div class="step-description">
-                    <p>Phase de test rigoureuse : vérification de la sécurité des formulaires, test des différents scénarios utilisateurs et ajustements finaux du responsive design pour s'assurer que le site est utilisable sur mobile.</p>
-                </div>
-            </article>
+            </aside>
 
-        </section>
+            <!-- COLONNE DROITE : Contenu du projet -->
+            <main class="contenu-projet">
+                
+                <!-- Description globale -->
+                <section style="margin-bottom: 2rem;">
+                    <h2>Aperçu du projet</h2>
+                    <p class="bio">Suivez ici le développement de cette application web, de la conception de la base de données à l'intégration finale.</p>
+                </section>
+
+                <!-- Timeline / Étapes de création -->
+                <section>
+                    <h2>Journal de bord du projet</h2>
+
+                    <!-- Étape 1 -->
+                    <article class="project-step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h3>Modélisation de la Base de Données</h3>
+                        </div>
+                        <div class="step-image-placeholder">
+                            <img src="image/tom_dom_mld.png" alt="Image du Modèle Logique de Données (MLD) de Tom à Dom" title="MLD du projet">
+                            <p class="image-caption">MLD initial : tables Utilisateurs, Prestations et Réservations.</p>
+                        </div>
+                        <div class="step-description">
+                            <p>La première étape a consisté à définir les entités nécessaires. Nous avons opté pour une base de données relationnelle MySQL. J'ai créé les tables pour gérer les clients (nom, email, adresse), les types de services proposés et les demandes d'intervention.</p>
+                        </div>
+                    </article>
+
+                    <!-- Étape 2 -->
+                    <article class="project-step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h3>Développement de l'Espace Client</h3>
+                        </div>
+                        <div class="step-image-placeholder">
+                            <img src="image/tom_dom_inscription.png" alt="Capture d'écran du formulaire d'inscription sur Tom à Dom" title="Formulaire d'inscription">
+                            <p class="image-caption">Formulaire d'inscription avec validation côté client et serveur.</p>
+                        </div>
+                        <div class="step-description">
+                            <p>Création de l'interface publique. Intégration du formulaire d'inscription en HTML/CSS et développement de la logique PHP pour insérer les nouvelles données client dans la table `utilisateurs` de la BDD.</p>
+                        </div>
+                    </article>
+
+                    <!-- Étape 3 -->
+                    <article class="project-step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h3>Tableau de Bord Administrateur</h3>
+                        </div>
+                        <div class="step-image-placeholder">
+                            <img src="image/tom_dom_admin.png" alt="Capture d'écran du Dashboard administrateur" title="Vue du tableau de bord">
+                            <p class="image-caption">Dashboard permettant la validation ou le refus des réservations.</p>
+                        </div>
+                        <div class="step-description">
+                            <p>Développement de la partie back-office sécurisée. L'administrateur peut visualiser, modifier ou supprimer les réservations clients. Une connexion à la base de données permet d'afficher l'état de chaque demande en temps réel.</p>
+                        </div>
+                    </article>
+
+                    <!-- Étape 4 -->
+                    <article class="project-step">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h3>Tests et Finalisation</h3>
+                        </div>
+                        <div class="step-image-placeholder">
+                            <img src="image/tom_dom_final.png" alt="Vue globale de l'application Tom à Dom" title="Application fonctionnelle">
+                            <p class="image-caption">Interface finale responsive de l'application.</p>
+                        </div>
+                        <div class="step-description">
+                            <p>Phase de test rigoureuse : vérification de la sécurité des formulaires, test des différents scénarios utilisateurs et ajustements finaux du responsive design pour s'assurer que le site est utilisable sur mobile.</p>
+                        </div>
+                    </article>
+
+                </section>
+            </main>
+
+        </div> 
+        <!-- FIN DE LA ZONE EN DEUX COLONNES -->
 
         <!-- Footer -->
-        <footer>
+        <footer style="margin-top: 3rem; text-align: center;">
             <p>© 2026 Antoine Dubois — BTS SIO SLAM — <a href="https://github.com/AntoineDuboisSIO115" target="_blank" style="color: var(--accent); text-decoration: none;">Code source sur GitHub</a></p>
         </footer>
     </div>
 
 </body>
-        </main>
-
-    <!-- TB Compétence  -->
-    <aside class="sidebar-competences">
-        <link rel="stylesheet" href="css.css">
-  <h3>Grille de compétences E5</h3>
-  
-  <div class="competences-list">
-    
-    <!-- Compétence 1 : Validée -->
-    <details class="competence-item valide">
-      <summary>
-        Gérer le patrimoine informatique
-        <span class="status-icon">✔️</span>
-      </summary>
-      <ul>
-        <li>Recenser et identifier les ressources numériques</li>
-        <li>Exploiter des référentiels, normes et standards</li>
-        <li>Mettre en place et vérifier les niveaux d’habilitation</li>
-        <li>Vérifier les conditions de la continuité d’un service</li>
-        <li>Gérer des sauvegardes</li>
-        <li>Vérifier le respect des règles d’utilisation</li>
-      </ul>
-    </details>
-
-    <!-- Compétence 2 : Validée -->
-    <details class="competence-item valide">
-      <summary>
-        Répondre aux incidents et demandes
-        <span class="status-icon">✔️</span>
-      </summary>
-      <ul>
-        <li>Collecter, suivre et orienter des demandes</li>
-        <li>Traiter des demandes concernant les services réseau, système et applicatifs</li>
-        <li>Traiter des demandes concernant les applications</li>
-      </ul>
-    </details>
-
-    <!-- Compétence 3 : Validée -->
-    <details class="competence-item valide" open> <!-- L'attribut "open" l'ouvre par défaut -->
-      <summary>
-        Développer la présence en ligne
-        <span class="status-icon">✔️</span>
-      </summary>
-      <ul>
-        <li>Valorisation de l’image de l’organisation sur les médias numériques</li>
-        <li>Référencer les services en ligne et mesurer leur visibilité</li>
-        <li>Participer à l’évolution d’un site Web exploitant les données</li>
-      </ul>
-    </details>
-
-    <!-- Compétence 4 : Validée -->
-    <details class="competence-item valide">
-      <summary>
-        Travailler en mode projet
-        <span class="status-icon">✔️</span>
-      </summary>
-      <ul>
-        <li>Analyser les objectifs et les modalités d’organisation</li>
-        <li>Planifier les activités</li>
-        <li>Évaluer les indicateurs de suivi et analyser les écarts</li>
-      </ul>
-    </details>
-
-    <!-- Compétence 5 : Non validée sur ce projet -->
-    <details class="competence-item non-valide">
-      <summary>
-        Mettre à disposition un service
-        <span class="status-icon">➖</span>
-      </summary>
-      <p class="non-mobilisee">Non mobilisée sur ce projet</p>
-    </details>
-
-    <!-- Compétence 6 : Non validée sur ce projet -->
-    <details class="competence-item non-valide">
-      <summary>
-        Organiser son développement
-        <span class="status-icon">➖</span>
-      </summary>
-      <p class="non-mobilisee">Non mobilisée sur ce projet</p>
-    </details>
-
-  </div>
-</aside>
-    
 </html>
