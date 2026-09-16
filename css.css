@@ -271,3 +271,123 @@ footer {
     font-size: 1rem;
     line-height: 1.7;
 }
+
+
+
+/* TB COMPETENCE*/
+
+
+
+/* Le conteneur principal reste identique */
+.layout-projet {
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1300px; 
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* La sidebar détaillée */
+.sidebar-competences {
+  flex: 0 0 350px; /* Légèrement plus large pour le texte détaillé */
+  background-color: #212c3d;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  position: sticky; 
+  top: 2rem; 
+}
+
+.sidebar-competences h3 {
+  color: #38bdf8; 
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.competences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style des blocs déroulants */
+.competence-item {
+  background-color: #1a222f;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.competence-item summary {
+  padding: 12px 15px;
+  font-weight: bold;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none; /* Enlève la petite flèche native sur certains navigateurs */
+  transition: background 0.2s ease;
+}
+
+/* Enlève la flèche native pour Safari */
+.competence-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.competence-item summary:hover {
+  background-color: #27354a;
+}
+
+/* Style du texte déroulé */
+.competence-item ul {
+  margin: 0;
+  padding: 15px 20px 15px 35px;
+  background-color: #151c27;
+  border-top: 1px solid #334155;
+}
+
+.competence-item li {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.competence-item li:last-child {
+  margin-bottom: 0;
+}
+
+/* Item non mobilisé */
+.non-mobilisee {
+  padding: 15px;
+  margin: 0;
+  background-color: #151c27;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid #334155;
+}
+
+.non-valide summary {
+  color: #64748b;
+  font-weight: normal;
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+  .layout-projet {
+    flex-direction: column; 
+  }
+  .sidebar-competences {
+    width: 100%;
+    position: static;
+  }
+}
