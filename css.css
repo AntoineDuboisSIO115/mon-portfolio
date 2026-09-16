@@ -345,3 +345,82 @@ footer {
     margin-bottom: 2rem;
   }
 }
+
+/* =========================================
+   CORRECTIONS FINALES : TABLEAU ET IMAGES
+   ========================================= */
+
+/* 1. On force la page à être bien large pour que rien ne s'écrase */
+.container {
+    max-width: 1300px !important; 
+    width: 95% !important;
+}
+
+/* 2. On empêche strictement les images de se déformer */
+.step-image-placeholder img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important; /* La magie pour garder les vraies proportions */
+}
+
+/* 3. On utilise une grille solide : 350px pour le tableau, le reste pour le projet */
+.layout-projet {
+    display: grid !important;
+    grid-template-columns: 350px 1fr !important;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* 4. On nettoie le tableau pour qu'il soit brut (style Excel) */
+.sidebar-competences {
+    background: transparent !important; /* Enlève le gros cadre gris autour */
+    padding: 0 !important;
+    box-shadow: none !important;
+    position: sticky;
+    top: 2rem;
+}
+
+.tableau-excel {
+    width: 100%;
+    border-collapse: collapse !important; /* Force les traits du quadrillage */
+    background-color: #1a222f; 
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Les bordures des cases (le quadrillage) */
+.tableau-excel th, 
+.tableau-excel td {
+    border: 1px solid #64748b !important; 
+    padding: 12px;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+
+.tableau-excel th {
+    background-color: #334155; 
+    font-weight: bold;
+    text-align: center;
+    color: #f8fafc;
+}
+
+.tableau-excel .cellule-croix {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #38bdf8;
+    width: 70px;
+    background-color: #1e293b;
+}
+
+/* Version Mobile (1 seule colonne) */
+@media (max-width: 950px) {
+    .layout-projet {
+        grid-template-columns: 1fr !important; 
+    }
+    .sidebar-competences {
+        position: static;
+        margin-bottom: 2rem;
+    }
+}
