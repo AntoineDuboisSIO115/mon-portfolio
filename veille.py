@@ -6,23 +6,32 @@ feed_url = "https://realpython.com/atom.xml"
 feed = feedparser.parse(feed_url)
 
 if feed.entries:
-  # On prend le dernier article du flux
+  # On récupère le tout premier article (le plus récent)
   entry = feed.entries[0]
   titre = entry.title
   lien = entry.link
   date_str = datetime.now().strftime("%d/%m/%Y")
 
+  # Récupération automatique du résumé de l'article depuis le flux RSS (avec un texte de secours si vide)
   resume = (
-      "Analyse automatique du flux RSS : nouveauté technique détectée et"
-      " intégrée pour la veille."
+      entry.get("summary", "")
+      .replace("<p>", "")
+      .replace("</p>", "")
+      .strip()
   )
+  if not resume:
+    resume = "Nouvelle ressource technique indexée pour la veille."
+
+  # (Optionnel) Tu peux alterner ou choisir une image en fonction du contenu ou d'un compteur
+  # Pour l'instant, on garde une structure propre
+  image_src = "image/art1.png"
 
   # 2. Lecture du fichier veille.html existant
   try:
     with open("veille.html", "r", encoding="utf-8") as f:
       content = f.read()
 
-    # Vérification anti-doublon : si le titre y est déjà, on ne fait rien
+    # Vérification anti-doublon
     if titre in content:
       print(
           "Cet article est déjà présent dans le tableau. Aucune modification"
@@ -34,7 +43,7 @@ if feed.entries:
             <tr style="border-bottom: 1px solid var(--border);">
               <td style="padding: 0.75rem 0.5rem; color: var(--text-muted);">{date_str}</td>
               <td style="padding: 0.75rem 0.5rem; font-weight: 500;">{titre}<br>
-                <img src="image/art1.png" alt="Illustration" style="width: 280px; border-radius: 6px; margin-top: 8px; border: 1px solid var(--border);">
+                <img src="{image_src}" alt="Illustration" style="width: 280px; border-radius: 6px; margin-top: 8px; border: 1px solid var(--border);">
               </td>
               <td style="padding: 0.75rem 0.5rem;"><a href="{lien}" target="_blank" style="color: var(--accent); text-decoration: none;">Real Python</a></td>
               <td style="padding: 0.75rem 0.5rem; color: var(--text-muted);">{resume}</td>
@@ -46,7 +55,9 @@ if feed.entries:
 
         with open("veille.html", "w", encoding="utf-8") as f:
           f.write(updated_content)
-        print("Le tableau de veille a été mis à jour avec succès !")
+        print(
+            "Le tableau de veille a été mis à jour avec le vrai résumé RSS !"
+        )
       else:
         print("Erreur : Le repère <!-- INJECT_HERE --> est introuvable.")
 
