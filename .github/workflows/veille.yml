@@ -1,0 +1,39 @@
+name: Automatisation Veille Technologique
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' # S'exécute tous les lundis à 8h00 UTC
+  workflow_dispatch:      # Permet de le lancer aussi à la main depuis l'onglet Actions
+
+jobs:
+  run-veille:
+    runs-on: ubuntu-latest
+    
+    # Donne les droits d'écriture à l'action pour qu'elle puisse modifier et pousser le code
+    permissions:
+      contents: write
+
+    steps:
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Installer les dépendances
+        run: |
+          pip install feedparser
+
+      - name: Exécuter le script de veille
+        run: |
+          python veille.py
+
+      - name: Sauvegarder et publier les modifications sur le site
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add veille.html
+          git commit -m "Mise à jour automatique de la veille technologique [skip ci]" || exit 0
+          git push
