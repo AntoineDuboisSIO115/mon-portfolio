@@ -1,14 +1,14 @@
 from datetime import datetime
+from deep_translator import GoogleTranslator
 import feedparser
 
 # 1. Liste de tes différents flux RSS de veille
 flux_rss = {
     "Real Python": "https://realpython.com/atom.xml",
     "Planet Python": "https://planetpython.org/rss20.xml",
-    # Tu pourras en ajouter d'autres ici facilement !
 }
 
-# Mots-clés qui augmentent la pertinence par rapport à ta veille sur l'automatisation et Python
+# Mots-clés pertinents pour ton orientation
 mots_cles_pertinents = [
     "automation",
     "api",
@@ -31,14 +31,12 @@ for nom_source, url in flux_rss.items():
     titre = entry.title.lower()
     resume_brut = entry.get("summary", "").lower()
 
-    # Calcul d'un score de pertinence basé sur la présence de tes mots-clés
     score = 0
     texte_complet = f"{titre} {resume_brut}"
     for mot in mots_cles_pertinents:
       if mot in texte_complet:
         score += 1
 
-    # On stocke l'article avec son score et sa source
     tous_les_articles.append({
         "titre": entry.title,
         "lien": entry.link,
@@ -47,7 +45,7 @@ for nom_source, url in flux_rss.items():
         "score": score,
     })
 
-# 3. Tri des articles pour trouver LE plus pertinent de toutes les sources
+# Tri pour trouver le plus pertinent
 tous_les_articles.sort(key=lambda x: x["score"], reverse=True)
 
 # Lecture du HTML existant
@@ -58,7 +56,7 @@ except FileNotFoundError:
   print("Erreur : Le fichier veille.html est introuvable.")
   exit()
 
-# On prend le meilleur article qui n'est pas déjà dans le site
+# Sélection du meilleur article inédit
 article_gagnant = None
 for art in tous_les_articles:
   if art["titre"] not in content:
@@ -66,15 +64,28 @@ for art in tous_les_articles:
     break
 
 if article_gagnant:
-  titre = article_gagnant["titre"]
+  titre_original = article_gagnant["titre"]
   lien = article_gagnant["lien"]
   source = article_gagnant["source"]
   date_str = datetime.now().strftime("%d/%m/%Y")
 
-  # Nettoyage et mise en forme du résumé
-  resume = (
+  # Nettoyage du résumé brut
+  resume_brut = (
       article_gagnant["resume"].replace("<p>", "").replace("</p>", "").strip()
   )
+
+  # TRADUCTION AUTOMATIQUE EN FRANÇAIS
+  try:
+    # Traduction du titre et du résumé
+    titre = GoogleTranslator(source="auto", target="fr").translate(
+        titre_original
+    )
+    resume = GoogleTranslator(source="auto", target="fr").translate(resume_brut)
+  except Exception as e:
+    titre = titre_original
+    resume = resume_brut
+    print(f"Erreur de traduction : {e}")
+
   if len(resume) > 350:
     resume = resume[:347] + "..."
 
@@ -98,8 +109,7 @@ if article_gagnant:
     with open("veille.html", "w", encoding="utf-8") as f:
       f.write(updated_content)
     print(
-        f"Succès : Le meilleur article de '{source}' a été sélectionné et"
-        " intégré !"
+        f"Succès : Article traduit et intégré depuis '{source}' !"
     )
   else:
     print("Erreur : Le repère <!-- INJECT_HERE --> est introuvable.")
