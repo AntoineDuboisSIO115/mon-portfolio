@@ -24,7 +24,7 @@ jobs:
 
       - name: Installer les dépendances
         run: |
-          pip install feedparser
+          pip install feedparser deep-translator
 
       - name: Exécuter le script de veille
         run: |
