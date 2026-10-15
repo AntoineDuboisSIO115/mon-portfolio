@@ -70,7 +70,7 @@ if article_gagnant:
   source = article_gagnant["source"]
   date_str = datetime.now().strftime("%d/%m/%Y")
 
-  # Nettoyage du résumé brut (suppression des balises HTML basiques)
+# Nettoyage du résumé brut (suppression des balises HTML basiques)
   resume_brut = (
       article_gagnant["resume"]
       .replace("<p>", "")
@@ -84,8 +84,11 @@ if article_gagnant:
     titre = GoogleTranslator(source="auto", target="fr").translate(
         titre_original
     )
-    # On traduit explicitement le résumé brut en français
+    print(f"Titre traduit avec succès : {titre}")
+
+    # Traduction explicite du résumé
     resume = GoogleTranslator(source="auto", target="fr").translate(resume_brut)
+    print(f"Résumé traduit avec succès : {resume[:50]}...")
   except Exception as e:
     titre = titre_original
     resume = resume_brut
