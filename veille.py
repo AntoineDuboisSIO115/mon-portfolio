@@ -20,6 +20,7 @@ mots_cles_pertinents = [
     "claude",
     "data",
     "tool",
+    "compiler",
 ]
 
 tous_les_articles = []
@@ -69,17 +70,21 @@ if article_gagnant:
   source = article_gagnant["source"]
   date_str = datetime.now().strftime("%d/%m/%Y")
 
-  # Nettoyage du résumé brut
+  # Nettoyage du résumé brut (suppression des balises HTML basiques)
   resume_brut = (
-      article_gagnant["resume"].replace("<p>", "").replace("</p>", "").strip()
+      article_gagnant["resume"]
+      .replace("<p>", "")
+      .replace("</p>", "")
+      .replace("<br>", " ")
+      .strip()
   )
 
-  # TRADUCTION AUTOMATIQUE EN FRANÇAIS
+  # TRADUCTION AUTOMATIQUE FORCÉE EN FRANÇAIS
   try:
-    # Traduction du titre et du résumé
     titre = GoogleTranslator(source="auto", target="fr").translate(
         titre_original
     )
+    # On traduit explicitement le résumé brut en français
     resume = GoogleTranslator(source="auto", target="fr").translate(resume_brut)
   except Exception as e:
     titre = titre_original
@@ -91,7 +96,7 @@ if article_gagnant:
 
   image_src = "image/art1.png"
 
-  # 4. Construction de la ligne HTML
+  # 4. Construction de la ligne HTML avec le résumé traduit
   nouvelle_ligne = f"""
         <tr style="border-bottom: 1px solid var(--border);">
           <td style="padding: 0.75rem 0.5rem; color: var(--text-muted);">{date_str}</td>
@@ -109,7 +114,7 @@ if article_gagnant:
     with open("veille.html", "w", encoding="utf-8") as f:
       f.write(updated_content)
     print(
-        f"Succès : Article traduit et intégré depuis '{source}' !"
+        f"Succès : Article traduit avec succès et intégré depuis '{source}' !"
     )
   else:
     print("Erreur : Le repère <!-- INJECT_HERE --> est introuvable.")
